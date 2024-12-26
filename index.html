@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stitching Unit Order Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        legend {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .measurement-group {
+            margin-bottom: 15px;
+        }
+        .measurement-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Stitching Unit Order Form</h1>
+        <form id="stitchingForm" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Customer Details</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Customer ID</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Contact No.</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email ID</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Instagram ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Order Details</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Order Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Expected Delivery Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mode of Delivery</label>
+                        <select class="form-select" required>
+                            <option value="">Select Mode</option>
+                            <option value="collect">Will Collect</option>
+                            <option value="send">To Be Sent</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" required>
+                            <option value="">Select Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Tailor Assigned</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Time Required</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Item and Measurement Details</legend>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Select Item:</label>
+                        <select class="form-select" id="itemSelect" required>
+                            <option value="">--Select Item--</option>
+                            <option value="blouse">Blouse</option>
+                            <option value="kurtha">Kurtha</option>
+                            <option value="pant">Pant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="blouseMeasurements" class="measurement-group d-none">
+                    <h5>Blouse Measurements</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Neck</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Shoulder</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Chest</label>
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kurthaMeasurements" class="measurement-group d-none">
+                    <h5>Kurtha Measurements</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Neck</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Shoulder</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Hand</label>
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pantMeasurements" class="measurement-group d-none">
+                    <h5>Pant Measurements</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Waist</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Length</label>
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fabric Details</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Fabric Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Meters</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Fabric Picture</label>
+                        <input type="file" class="form-control" accept="image/*" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tailoring Requirements</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Pattern Reference</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Items to be sourced</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Cost and Feedback</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Purchased Product Cost</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Total Charges</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Submit Order</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('itemSelect').addEventListener('change', function() {
+            // Hide all measurement sections
+            document.querySelectorAll('.measurement-group').forEach(group => {
+                group.classList.add('d-none');
+            });
+            
+            // Show selected measurement section
+            const selectedValue = this.value;
+            if (selectedValue) {
+                document.getElementById(`${selectedValue}Measurements`).classList.remove('d-none');
+            }
+        });
+    </script>
+</body>
+</html>
